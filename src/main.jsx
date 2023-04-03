@@ -4,12 +4,9 @@ import App from './App';
 import './index.css';
 
 import StoreProvider from './context/StoreContext';
-import UserContextProvider from './context/UserContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <UserContextProvider>
-    <StoreProvider>
-      <App />
-    </StoreProvider>
-  </UserContextProvider>
+  <StoreProvider>
+    <App />
+  </StoreProvider>
 );

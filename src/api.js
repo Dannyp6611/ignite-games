@@ -25,4 +25,7 @@ const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 // POPULAR GAMES
 const POPULAR_GAMES = `${BASE_URL}games?key=6c43fc88973f4b849651b839ee4e11e9&dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
 
-export { POPULAR_GAMES };
+// UPCOMING GAMES
+const UPCOMING_GAMES = `${BASE_URL}games?key=6c43fc88973f4b849651b839ee4e11e9&dates=${currentDate},${nextYear}&ordering=-added&page_size=10`;
+
+export { POPULAR_GAMES, UPCOMING_GAMES };

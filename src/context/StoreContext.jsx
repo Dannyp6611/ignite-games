@@ -3,7 +3,7 @@ import { createContext, useReducer } from 'react';
 import { POPULAR_GAMES } from '../api';
 
 const initialState = {
-  popularGames: [],
+  popular: [],
   newGames: [],
   upcoming: [],
   searched: [],
@@ -11,10 +11,10 @@ const initialState = {
 
 const storeReducer = (state, action) => {
   switch (action.type) {
-    case 'GET_POPULAR':
+    case 'FETCH_GAMES':
       return {
         ...state,
-        popularGames: action.payload,
+        popular: action.payload,
       };
     default:
       return state;
@@ -26,14 +26,14 @@ export const storeContext = createContext();
 const StoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(storeReducer, initialState);
 
-  const getPopularGames = async () => {
+  const loadGames = async () => {
     const response = await fetch(POPULAR_GAMES);
-    const data = await response.json();
-    dispatch({ type: 'GET_POPULAR', payload: data });
+    const popularData = await response.json();
+    dispatch({ type: 'FETCH_GAMES', payload: popularData.results });
   };
 
   return (
-    <storeContext.Provider value={{ getPopularGames }}>
+    <storeContext.Provider value={{ loadGames }}>
       {children}
     </storeContext.Provider>
   );

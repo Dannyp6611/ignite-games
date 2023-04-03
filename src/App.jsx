@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { useStoreContext } from './context/useStoreContext';
 
 function App() {
-  const { getPopularGames } = useStoreContext();
+  const { loadGames } = useStoreContext();
 
   useEffect(() => {
-    getPopularGames();
+    loadGames();
   }, []);
 
   return (

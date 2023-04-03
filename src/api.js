@@ -23,9 +23,12 @@ const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
 const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
 // POPULAR GAMES
-const POPULAR_GAMES = `${BASE_URL}games?key=6c43fc88973f4b849651b839ee4e11e9&dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
+const POPULAR_GAMES_URL = `${BASE_URL}games?key=6c43fc88973f4b849651b839ee4e11e9&dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
 
 // UPCOMING GAMES
-const UPCOMING_GAMES = `${BASE_URL}games?key=6c43fc88973f4b849651b839ee4e11e9&dates=${currentDate},${nextYear}&ordering=-added&page_size=10`;
+const UPCOMING_GAMES_URL = `${BASE_URL}games?key=6c43fc88973f4b849651b839ee4e11e9&dates=${currentDate},${nextYear}&ordering=-added&page_size=10`;
 
-export { POPULAR_GAMES, UPCOMING_GAMES };
+// NEW GAMES
+const NEW_GAMES_URL = `${BASE_URL}games?key=6c43fc88973f4b849651b839ee4e11e9&dates=${lastYear},${currentDate}&ordering=-released&page_size=10`;
+
+export { POPULAR_GAMES_URL, UPCOMING_GAMES_URL, NEW_GAMES_URL };

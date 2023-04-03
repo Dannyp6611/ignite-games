@@ -1,7 +1,12 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useStoreContext } from './context/useStoreContext';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { getPopularGames } = useStoreContext();
+
+  useEffect(() => {
+    getPopularGames();
+  }, []);
 
   return (
     <div className="App">

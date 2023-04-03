@@ -49,7 +49,7 @@ const StoreProvider = ({ children }) => {
   };
 
   return (
-    <storeContext.Provider value={{ loadGames }}>
+    <storeContext.Provider value={{ loadGames, ...state }}>
       {children}
     </storeContext.Provider>
   );

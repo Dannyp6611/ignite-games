@@ -1,16 +1,10 @@
-import { useEffect } from 'react';
-import { useStoreContext } from './context/useStoreContext';
+// components & pages
+import Home from './pages/Home';
 
 function App() {
-  const { loadGames } = useStoreContext();
-
-  useEffect(() => {
-    loadGames();
-  }, []);
-
   return (
     <div className="App">
-      <h1 className="text-3xl font-bold underline">testing tailwind</h1>
+      <Home />
     </div>
   );
 }

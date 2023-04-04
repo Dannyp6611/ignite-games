@@ -28,7 +28,7 @@ const Game = ({ name, released, id, image }) => {
         <p>{released}</p>
         <div className="w-full h-[40vh]">
           <img
-            className="object-cover h-full"
+            className="object-cover h-full w-full"
             src={getSmallerImage(image, 640)}
             alt={name}
           />

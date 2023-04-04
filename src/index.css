@@ -24,3 +24,7 @@ h3 {
 p {
   @apply text-[1.2rem] leading-[200%] text-[#696969];
 }
+
+input {
+  @apply font-bold font-mont;
+}

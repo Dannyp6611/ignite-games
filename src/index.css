@@ -19,7 +19,7 @@ h2 {
   @apply text-5xl font-abril font-normal text-[#333];
 }
 h3 {
-  @apply text-[1.3rem] text-[#333] p-6;
+  @apply text-[1.3rem] text-[#333] py-6;
 }
 p {
   @apply text-[1.2rem] leading-[200%] text-[#696969];

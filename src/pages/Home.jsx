@@ -7,7 +7,13 @@ import { motion } from 'framer-motion';
 import Game from '../components/Game';
 import GameDetail from '../components/GameDetail';
 
+import { useLocation } from 'react-router-dom';
+
 function Home() {
+  // get the current location
+  const location = useLocation();
+  const pathId = location.pathname.split('/')[2];
+
   const { loadGames, popular, newGames, upcoming } = useStoreContext();
 
   useEffect(() => {
@@ -16,7 +22,7 @@ function Home() {
 
   return (
     <motion.div className="px-20">
-      <GameDetail />
+      {pathId && <GameDetail />}
       <h2 className="py-20">Upcoming Games</h2>
       {/* Games */}
       <motion.div className="game-container min-h-[80vh]">

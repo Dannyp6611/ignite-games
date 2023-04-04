@@ -14,7 +14,8 @@ const initialState = {
   upcoming: [],
   searched: [],
   singleGame: null,
-  screenshots: {},
+  screenshots: null,
+  isLoading: false,
 };
 
 const storeReducer = (state, action) => {
@@ -26,11 +27,17 @@ const storeReducer = (state, action) => {
         newGames: action.payload.newGames,
         upcoming: action.payload.upcoming,
       };
+    case 'LOADING_DETAIL':
+      return {
+        ...state,
+        isLoading: true,
+      };
     case 'GET_DETAIL':
       return {
         ...state,
         singleGame: action.payload.game,
         screenshots: action.payload.screenshots,
+        isLoading: false,
       };
     default:
       return state;
@@ -63,6 +70,8 @@ const StoreProvider = ({ children }) => {
   };
 
   const loadDetail = async (id) => {
+    dispatch({ type: 'LOADING_DETAIL' });
+
     const detailDataResponse = await fetch(gameDetailsURL(id));
     const detailData = await detailDataResponse.json();
 

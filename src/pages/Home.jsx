@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 
 // components
 import Game from '../components/Game';
+import GameDetail from '../components/GameDetail';
 
 function Home() {
   const { loadGames, popular, newGames, upcoming } = useStoreContext();
@@ -15,6 +16,7 @@ function Home() {
 
   return (
     <motion.div className="px-20">
+      <GameDetail />
       <h2 className="py-20">Upcoming Games</h2>
       {/* Games */}
       <motion.div className="game-container min-h-[80vh]">

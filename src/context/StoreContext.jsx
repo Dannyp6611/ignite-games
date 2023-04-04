@@ -1,12 +1,20 @@
 import { createContext, useReducer } from 'react';
 
-import { POPULAR_GAMES_URL, UPCOMING_GAMES_URL, NEW_GAMES_URL } from '../api';
+import {
+  POPULAR_GAMES_URL,
+  UPCOMING_GAMES_URL,
+  NEW_GAMES_URL,
+  gameDetailsURL,
+  gameScreenshotURL,
+} from '../api';
 
 const initialState = {
   popular: [],
   newGames: [],
   upcoming: [],
   searched: [],
+  singleGame: null,
+  screenshots: {},
 };
 
 const storeReducer = (state, action) => {
@@ -17,6 +25,12 @@ const storeReducer = (state, action) => {
         popular: action.payload.popular,
         newGames: action.payload.newGames,
         upcoming: action.payload.upcoming,
+      };
+    case 'GET_DETAIL':
+      return {
+        ...state,
+        singleGame: action.payload.game,
+        screenshots: action.payload.screenshots,
       };
     default:
       return state;
@@ -48,8 +62,24 @@ const StoreProvider = ({ children }) => {
     });
   };
 
+  const loadDetail = async (id) => {
+    const detailDataResponse = await fetch(gameDetailsURL(id));
+    const detailData = await detailDataResponse.json();
+
+    const screenshotsResponse = await fetch(gameScreenshotURL(id));
+    const screenshotsData = await screenshotsResponse.json();
+
+    dispatch({
+      type: 'GET_DETAIL',
+      payload: {
+        game: detailData,
+        screenshots: screenshotsData,
+      },
+    });
+  };
+
   return (
-    <storeContext.Provider value={{ loadGames, ...state }}>
+    <storeContext.Provider value={{ loadGames, loadDetail, ...state }}>
       {children}
     </storeContext.Provider>
   );

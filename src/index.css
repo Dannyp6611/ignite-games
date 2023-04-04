@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,4 +9,18 @@
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   column-gap: 3rem;
   row-gap: 5rem;
+}
+
+html {
+  @apply scrollbar-thin scrollbar-thumb-gray-700;
+}
+
+h2 {
+  @apply text-5xl font-abril font-normal text-[#333];
+}
+h3 {
+  @apply text-[1.3rem] text-[#333] p-6;
+}
+p {
+  @apply text-[1.2rem] leading-[200%] text-[#696969];
 }

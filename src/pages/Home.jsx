@@ -28,6 +28,33 @@ function Home() {
           />
         ))}
       </motion.div>
+      <h2 className="py-20">Popular Games</h2>
+      {/* Games */}
+      <motion.div className="game-container min-h-[80vh]">
+        {popular.map((game) => (
+          <Game
+            key={game.id}
+            name={game.name}
+            released={game.released}
+            id={game.id}
+            image={game.background_image}
+          />
+        ))}
+      </motion.div>
+      <h2 className="py-20">New Games</h2>
+      {/* Games */}
+      <motion.div className="game-container min-h-[80vh]">
+        {newGames.map((game) => (
+          <Game
+            key={game.id}
+            name={game.name}
+            released={game.released}
+            id={game.id}
+            image={game.background_image}
+          />
+        ))}
+      </motion.div>
+      popular
     </motion.div>
   );
 }
